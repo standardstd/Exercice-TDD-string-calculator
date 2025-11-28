@@ -27,4 +27,30 @@ public class CalculatorTest {
         assertThrows(InvalidNumberFormatException.class,
                 () -> calculator.add("4,a"));
     }
+
+    @Test
+    void whenOneNumericValues_thenReturnsTheSameNumber() {
+        int result = calculator.add("1");
+        assertEquals(1, result);
+    }
+
+    @Test
+    void whenTwoNumericValues_thenReturnsTheSumOfTwoNumbers() {
+        int result = calculator.add("1, 2");
+        assertEquals(3, result);
+    }
+
+    @Test
+    void whenOneNumericValueAndVoid_thenReturnsOnlyTheNumber() {
+        int result = calculator.add("1, ");
+        assertEquals(1, result);
+    }
+
+    @Test
+    void whenVoidBetweenTwoNumbers_thenReturnsOnlyTheSameOfNumbers() {
+        int result = calculator.add("1,,3");
+        assertEquals(4, result);
+    }
+
+
 }
